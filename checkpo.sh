@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Lets see what msgfmt have to say about the created PO files
 

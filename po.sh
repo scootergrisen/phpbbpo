@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 
 
 # PO converter for phpBB language packs
 # Extracts strings from the php files and puts them in a single PO file
 #
-# Version: 2
+# Version: 3
 # Author: scootergrisen (https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1329459)
 # Year: 2018
 # License: GNU GPL 3 (https://www.gnu.org/licenses/)
@@ -68,6 +68,15 @@
 # Virtaal http://virtaal.translatehouse.org/
 # Poedit https://poedit.net/
 # Qt Linguist https://doc.qt.io/qt-5/linguist-translators.html
+
+
+
+# Variables
+
+declare languageinenglisha;
+declare languageinenglishb;
+declare newfilename;
+declare languagecode;
 
 
 
@@ -267,7 +276,7 @@ while getopts ":a:b:cvh" opt; do
       exit 1
       ;;
     v)
-      echo "Version 2"
+      echo "Version 3"
       exit 1
       ;;
     \?)

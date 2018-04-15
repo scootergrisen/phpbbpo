@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 
 
 # Download, extract and converter all translations for phpBB 3.2.2
 # Uses: curl, unzip
 #
-# Version: 1
+# Version: 3
 # Author: scootergrisen (https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1329459)
 # Year: 2018
 # License: GNU GPL 3
