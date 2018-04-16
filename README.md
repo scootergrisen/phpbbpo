@@ -8,7 +8,7 @@ You can then use the PO file to check for mistakes in many available tools that 
 
 ## Language packs
 
-Can be found on [https://www.phpbb.com/languages/](phpbb.com] (also [https://www.phpbb.com/customise/db/language_packs-25](phpbb.com))
+Can be found on [phpbb.com](https://www.phpbb.com/languages/] (also [phpbb.com](https://www.phpbb.com/customise/db/language_packs-25))
 If you run the all.sh script it will download the language packs for you so you dont have to do it manually
 
 ## po.sh
@@ -49,13 +49,13 @@ This we can use to improve the code or the language packs so it will hopefully g
 ## Tools
 # Here are some tools that can be used to check for errors in PO files
 
-[https://www.gnu.org/software/gettext/](gettext)  
-[https://github.com/pyg3t/pyg3t](PyG3T)  
-[Toolkit http://toolkit.translatehouse.org/](Translate)  
+[gettext](https://www.gnu.org/software/gettext/)  
+[PyG3T](https://github.com/pyg3t/pyg3t)  
+[http://toolkit.translatehouse.org/](Toolkit)  
 GUI tools:  
-[http://virtaal.translatehouse.org/](Virtaal)  
-[https://poedit.net/](Poedit)  
-[https://doc.qt.io/qt-5/linguist-translators.html]("Qt Linguist")  
+[Virtaal](http://virtaal.translatehouse.org/)  
+[Poedit](https://poedit.net/)  
+[Qt Linguist](https://doc.qt.io/qt-5/linguist-translators.html)  
 
 ## Permission to run files
 # chmod
