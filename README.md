@@ -1,6 +1,8 @@
 ## phpBB PO Converter
 # These shell scripts can extract the strings from the php files in language packs and create a single PO file.
 
+You can then use the PO file to check for mistakes in many available tools that knows PO.
+
 ## Screenshot
 # ![Screenshot of PO converter in terminal](screenshot1.png)
 
@@ -53,14 +55,31 @@ This we can use to improve the code or the language packs so it will hopefully g
 GUI tools:  
 [http://virtaal.translatehouse.org/](Virtaal)  
 [https://poedit.net/](Poedit)  
-[https://doc.qt.io/qt-5/linguist-translators.html](Qt Linguist)  
+[https://doc.qt.io/qt-5/linguist-translators.html]("Qt Linguist")  
 
 ## Permission to run files
 # chmod
 
 If you get "command not found" or "Permission denied" you might need to run these commands before you can execute the files
-sudo chmod +x po.sh
-sudo chmod +x all.sh
+
+    sudo chmod +x po.sh all.sh
+
+## Convert PO file back to PHP files
+
+Question: Can i convert the PO file back to the PHP files?
+Answer: Nope.
+
+Question: Why nope?
+Answer: The shell scripts does not save info about what files the strings came from and comments that developers and translators might have left in the files are ignored.
+
+Question: Can you make it?
+Answer: I dont know. It sounds hard.
+
+## Requirements
+# What you need for the shell scripts to work
+
+PHP
+...(i will add more here when i find out what is needed to run the shell scripts)
 
 ## End note
 # The scripts uses curl, unzip, sed, php so i guess lots of things can go wrong and im not good at writing shell scripts so feel free to help improve the code.

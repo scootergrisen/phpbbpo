@@ -77,6 +77,7 @@ declare languageinenglisha;
 declare languageinenglishb;
 declare newfilename;
 declare languagecode;
+declare osfofsofinonsf;
 
 
 
@@ -139,12 +140,13 @@ usage() { usagetext 1>&2; exit 1; }
 while getopts ":a:b:cvh" opt; do
   case $opt in
     a)
-      for f in $(find $OPTARG -name "*.php"); do cat $f >> temp/output.a.php; done
+      for f in $(find $OPTARG -name "*.php"); do osfofsofinonsf=$f; echo -e "●\c"; cat $f >> temp/output.a.php; done
       for f in $(find $OPTARG -name "iso.txt"); do languageinenglisha=$(head -n 1 $f); done
       ;;
     b)
-      for f in $(find $OPTARG -name "*.php"); do cat $f >> temp/output.b.php; done
+      for f in $(find $OPTARG -name "*.php"); do osfofsofinonsf=$f; echo -e "●\c"; cat $f >> temp/output.b.php; done
       for f in $(find $OPTARG -name "iso.txt"); do languageinenglishb=$(head -n 1 $f); done
+      echo "";
 
       # temporary solution to get language code for PO file header
       case $OPTARG in
@@ -622,7 +624,7 @@ fi
 # Create the PO file
 if [ -v languageinenglisha ]
 then
-    echo "Creating PO file from $languageinenglisha <=> $languageinenglishb [$languagecode]";
+    echo "Creating PO file: $languageinenglisha <=> $languageinenglishb [$languagecode]";
 fi
 
 if [ -v newfilename ]
