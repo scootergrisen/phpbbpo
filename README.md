@@ -4,7 +4,10 @@
 You can then use the PO file to check for mistakes in many available tools that knows PO.
 
 ## Screenshot
+Running PO converter in a terminal.
 # ![Screenshot of PO converter in terminal](screenshot1.png)
+With the PO file you can check the translation in tools like [Virtaal](http://virtaal.translatehouse.org/).
+# ![Screenshot of PO file in Virtaal](screenshot2.png)
 
 ## Language packs
 
@@ -62,24 +65,18 @@ GUI tools:
 
 If you get "command not found" or "Permission denied" you might need to run these commands before you can execute the files
 
-    sudo chmod +x po.sh all.sh
+    sudo chmod +x po.sh all.sh checkpo.sh
 
 ## Convert PO file back to PHP files
 
 Question: Can i convert the PO file back to the PHP files?
 Answer: Nope.
 
-Question: Why nope?
-Answer: The shell scripts does not save info about what files the strings came from and comments that developers and translators might have left in the files are ignored.
-
-Question: Can you make it?
-Answer: I dont know. It sounds hard.
-
 ## Requirements
-# What you need for the shell scripts to work
+# Packages your system needs to have installed for the shell scripts to work
 
-PHP
+php curl gettext
 ...(i will add more here when i find out what is needed to run the shell scripts)
 
-## End note
-# The scripts uses curl, unzip, sed, php so i guess lots of things can go wrong and im not good at writing shell scripts so feel free to help improve the code.
+## Contribute
+# Feel free to help improve the code

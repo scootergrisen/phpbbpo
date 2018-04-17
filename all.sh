@@ -2,19 +2,21 @@
 
 
 
-# Download, extract and converter all translations for phpBB 3.2.2
-# Uses: curl, unzip
+# Download, extract and converter some translations for phpBB
 #
-# Version: 3
+#
+# Version: 4
 # Author: scootergrisen (https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1329459)
 # Year: 2018
-# License: GNU GPL 3
+# License: GNU GPL 3 (https://www.gnu.org/licenses/)
+# Code: https://github.com/scootergrisen/phpbbpo
 
 
 
-echo "Downloads all language packs (that have translation for phpBB 3.2.2) (zip/)"
-echo "Extracts zip files (zipextracted/)"
-echo "Converts the php files to PO format (po/)"
+echo "This will happen:"
+echo "Download some language packs from phpbb.com (zip/)"
+echo "Extract zip files (zipextracted/)"
+echo "Convert php files to PO format (po/)"
 echo ""
 
 
@@ -53,8 +55,9 @@ fi
 
 if [ -e zip/ ]
 then
-    echo -e "Downloading zip files... \c"
-    # Download language packs (all the onces that have a translation for phpBB 3.2.2)
+    echo "Downloading zip files..."
+    # Download language packs
+# 3.2.2:
     if ! [ -e zip/american_english_3_2_0.zip ]
     then
         echo -e "↓\c"
@@ -230,6 +233,65 @@ then
     else
         echo -e "●\c"
     fi
+# 3.2.1:
+    if ! [ -e zip/british_english_3_2_1.zip ]
+    then
+        echo -e "↓\c"
+        curl --progress-bar -s -o "zip/british_english_3_2_1.zip" -C - https://www.phpbb.com/customise/db/download/145721
+    else
+        echo -e "●\c"
+    fi
+    if ! [ -e zip/estonian_eesti_keel_3_2_1_2017_10_19.zip ]
+    then
+        echo -e "↓\c"
+        curl --progress-bar -s -o "zip/estonian_eesti_keel_3_2_1_2017_10_19.zip" -C - https://www.phpbb.com/customise/db/download/150191
+    else
+        echo -e "●\c"
+    fi
+    if ! [ -e zip/finnish_3_2_1_1.zip ]
+    then
+        echo -e "↓\c"
+        curl --progress-bar -s -o "zip/finnish_3_2_1_1.zip" -C - https://www.phpbb.com/customise/db/download/149231
+    else
+        echo -e "●\c"
+    fi
+    if ! [ -e zip/hebrew_3_2_1.zip ]
+    then
+        echo -e "↓\c"
+        curl --progress-bar -s -o "zip/hebrew_3_2_1.zip" -C - https://www.phpbb.com/customise/db/download/151981
+    else
+        echo -e "●\c"
+    fi
+    if ! [ -e zip/italian_3_1_0.zip ]
+    then
+        echo -e "↓\c"
+        curl --progress-bar -s -o "zip/italian_3_1_0.zip" -C - https://www.phpbb.com/customise/db/download/149051
+    else
+        echo -e "●\c"
+    fi
+    if ! [ -e zip/portuguese_português_3_1_0.zip ]
+    then
+        echo -e "↓\c"
+        curl --progress-bar -s -o "zip/portuguese_português_3_1_0.zip" -C - https://www.phpbb.com/customise/db/download/146101
+    else
+        echo -e "●\c"
+    fi
+# 3.2.0:
+    if ! [ -e zip/british_english_3_2_0.zip ]
+    then
+        echo -e "↓\c"
+        curl --progress-bar -s -o "zip/british_english_3_2_0.zip" -C - https://www.phpbb.com/customise/db/download/134676
+    else
+        echo -e "●\c"
+    fi
+    if ! [ -e zip/czech_1_9.zip ]
+    then
+        echo -e "↓\c"
+        curl --progress-bar -s -o "zip/czech_1_9.zip" -C - https://www.phpbb.com/customise/db/download/135641
+    else
+        echo -e "●\c"
+    fi
+
     echo ""
 
     # phpbb.com uses UTF-8 so seems this does not work i curl ("attachment; filename*=UTF-8''ukrainian_1_2_3.zip")
@@ -261,7 +323,7 @@ then
 
     if [ -e zipextracted/ ]
     then
-        echo -e "Extracting zip files...  \c"
+        echo "Extracting zip files..."
         # Extract all the language pack zip files
         #unzip -o zip/*.zip -d zipextracted/
         for f in $(find zip/ -name "*.zip"); do unzip -qo $f -d zipextracted/; echo -e "●\c"; done
@@ -274,8 +336,8 @@ fi
 
 if [ -e po/ ]
 then
-    echo -e "Creating PO files... \c"
-    echo ""
+    echo "Creating PO files..."
+# 3.2.2:
     ./po.sh -a zipextracted/british_english_3_2_2/ -b zipextracted/american_english_3_2_0/
     ./po.sh -a zipextracted/british_english_3_2_2/ -b zipextracted/arabic_3_2_2/
     ./po.sh -a zipextracted/british_english_3_2_2/ -b zipextracted/brazilian_portuguese_1_3_2/
@@ -301,6 +363,14 @@ then
     ./po.sh -a zipextracted/british_english_3_2_2/ -b zipextracted/spanish_formal_honorifics_3_2_2/
     ./po.sh -a zipextracted/british_english_3_2_2/ -b zipextracted/turkish_1_2_2/
     ./po.sh -a zipextracted/british_english_3_2_2/ -b zipextracted/ukrainian_1_2_3/
+# 3.2.1:
+    ./po.sh -a zipextracted/british_english_3_2_1/ -b zipextracted/estonian_eesti_keel_3_2_1_2017_10_19/
+    ./po.sh -a zipextracted/british_english_3_2_1/ -b zipextracted/finnish_3_2_1_1/
+    ./po.sh -a zipextracted/british_english_3_2_1/ -b zipextracted/hebrew_3_2_1/
+    ./po.sh -a zipextracted/british_english_3_2_1/ -b zipextracted/italian_3_1_0/
+    ./po.sh -a zipextracted/british_english_3_2_1/ -b zipextracted/portuguese_português_3_1_0/
+# 3.2.0:
+    ./po.sh -a zipextracted/british_english_3_2_0/ -b zipextracted/czech_1_9/
 fi
 
 

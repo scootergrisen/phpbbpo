@@ -5,7 +5,7 @@
 # PO converter for phpBB language packs
 # Extracts strings from the php files and puts them in a single PO file
 #
-# Version: 3
+# Version: 4
 # Author: scootergrisen (https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1329459)
 # Year: 2018
 # License: GNU GPL 3 (https://www.gnu.org/licenses/)
@@ -81,6 +81,14 @@ declare osfofsofinonsf;
 
 
 
+# Remove temporary files
+if [ -e temp/ ]
+then
+    rm -fr temp/
+fi
+
+
+
 # Create dir for the temporary files
 if ! [ -e temp/ ]
 then
@@ -94,11 +102,6 @@ if ! [ -e po/ ]
 then
     mkdir po/
 fi
-
-
-
-# Remove temporary files
-rm -fr /temp
 
 
 
@@ -150,6 +153,7 @@ while getopts ":a:b:cvh" opt; do
 
       # temporary solution to get language code for PO file header
       case $OPTARG in
+        # 3.2.2:
         american_english_3_2_0|american_english_3_2_0/|zipextracted/american_english_3_2_0/)
             newfilename="american_english_3_2_0.po"
             languagecode="en-us"
@@ -250,6 +254,32 @@ while getopts ":a:b:cvh" opt; do
             newfilename="ukrainian_1_2_3.po"
             languagecode="uk"
             ;;
+        # 3.2.1:
+        estonian_eesti_keel_3_2_1_2017_10_19|estonian_eesti_keel_3_2_1_2017_10_19/|zipextracted/estonian_eesti_keel_3_2_1_2017_10_19/)
+            newfilename="estonian_eesti_keel_3_2_1_2017_10_19.po"
+            languagecode="et"
+            ;;
+        finnish_3_2_1_1|finnish_3_2_1_1/|zipextracted/finnish_3_2_1_1/)
+            newfilename="finnish_3_2_1_1.po"
+            languagecode="fi"
+            ;;
+        hebrew_3_2_1|hebrew_3_2_1/|zipextracted/hebrew_3_2_1/)
+            newfilename="hebrew_3_2_1.po"
+            languagecode="he"
+            ;;
+        italian_3_1_0|italian_3_1_0/|zipextracted/italian_3_1_0/)
+            newfilename="italian_3_1_0.po"
+            languagecode="it"
+            ;;
+        portuguese_português_3_1_0|portuguese_português_3_1_0/|zipextracted/portuguese_português_3_1_0/)
+            newfilename="portuguese_português_3_1_0.po"
+            languagecode="pt_preao"
+            ;;
+        # 3.2.0:
+        czech_1_9|czech_1_9/|zipextracted/czech_1_9/)
+            newfilename="czech_1_9.po"
+            languagecode="cs"
+            ;;
         *)
             newfilename="unknown.po"
             languagecode="unknown"
@@ -278,7 +308,7 @@ while getopts ":a:b:cvh" opt; do
       exit 1
       ;;
     v)
-      echo "Version 3"
+      echo "PO converter 4"
       exit 1
       ;;
     \?)
@@ -330,10 +360,13 @@ msgstr ""
 
 // Fix the strings so they can be in msgid "" and msgstr "" without " and newline causing problems
 // so " have to be escaped
-// note \" must not become \\" because then " is still not escaped
+// TODO: note \" must not become \\" because then " is still not escaped
+// some strings have \" already.
 // the php files use: 'KEY' => 'Text "text".'
-\$replace_from = array('"', "\n");
-\$replace_to = array('\\"', "\\\n");
+
+// NOTE: This is double escaped inside the shell script so good luck in figuring out the real value
+\$replace_from = array('\\\\', '"', "\\n");
+\$replace_to = array('\\\\\\\\', '\\"', "\\\n");
 
 //echo "lang_a\n";
 //print_r(\$lang_a);
@@ -480,7 +513,7 @@ foreach (\$lang_a as \$keya => \$valuea) {
                 \$comment = 'Strings from \$lang array key [' . \$keya . ']';
                 \$msgctxt = '[' . \$keya . ']';
                 \$msgid = \$lang_a[\$keya];
-                \$msgstr = \$lang_b[\$keya];
+                \$msgstr = \$lang_b[\$keya]; // some strings gives "Undefined index"
 
                 \$potextarray[] = array(
                     "comment" => \$comment,
@@ -622,17 +655,9 @@ fi
 
 
 # Create the PO file
-if [ -v languageinenglisha ]
-then
-    echo "Creating PO file: $languageinenglisha <=> $languageinenglishb [$languagecode]";
-fi
-
-if [ -v newfilename ]
+if [ -v newfilename ] && [ -v languageinenglisha ]
 then
     php temp/output.php > po/$newfilename
+    #echo "Created po/$newfilename: $languageinenglisha <=> $languageinenglishb [$languagecode]";
+    echo "po/$newfilename was created";
 fi
-
-
-
-# Remove temporary folder
-rm -fr temp/

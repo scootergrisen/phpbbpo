@@ -1,32 +1,19 @@
 #!/bin/bash
 
-# Lets see what msgfmt have to say about the created PO files
+
+
+# Lets check the PO files
+#
+#
+# Version: 4
+# Author: scootergrisen (https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1329459)
+# Year: 2018
+# License: GNU GPL 3 (https://www.gnu.org/licenses/)
+# Code: https://github.com/scootergrisen/phpbbpo
+
+
 
 # --output-file=/dev/null
-#        avoids creating the message.mo file
+#        avoids creating the message.mo file that would otherwise be created
 
-msgfmt --output-file=/dev/null po/american_english_3_2_0.po
-msgfmt --output-file=/dev/null po/arabic_3_2_2.po
-msgfmt --output-file=/dev/null po/brazilian_portuguese_1_3_2.po
-msgfmt --output-file=/dev/null po/british_english_3_2_2.po
-msgfmt --output-file=/dev/null po/catalan_2_1_3.po
-msgfmt --output-file=/dev/null po/croatian_casual_honorifics_3_2_2.po
-msgfmt --output-file=/dev/null po/croatian_formal_honorifics_3_2_2.po
-msgfmt --output-file=/dev/null po/danish_3_2_2.po
-msgfmt --output-file=/dev/null po/dutch_casual_honorifics_2_1_2.po
-msgfmt --output-file=/dev/null po/french_3_2_0.po
-msgfmt --output-file=/dev/null po/gaelic_3_2_2.po
-msgfmt --output-file=/dev/null po/german_casual_honorifics_3_2_2.po
-msgfmt --output-file=/dev/null po/german_formal_honorifics_3_2_2.po
-msgfmt --output-file=/dev/null po/greek_3_2_2.po
-msgfmt --output-file=/dev/null po/mandarin_chinese_simplified_script_18_03_0.po
-msgfmt --output-file=/dev/null po/mandarin_chinese_traditional_script_3_2_2.po
-msgfmt --output-file=/dev/null po/persian_3_2_2.po
-msgfmt --output-file=/dev/null po/polish_3_2_2.po
-msgfmt --output-file=/dev/null po/portuguese_3_1_1.po
-msgfmt --output-file=/dev/null po/russian_2_0_2.po
-msgfmt --output-file=/dev/null po/slovak_3_2_2.po
-msgfmt --output-file=/dev/null po/spanish_casual_honorifics_3_2_2.po
-msgfmt --output-file=/dev/null po/spanish_formal_honorifics_3_2_2.po
-msgfmt --output-file=/dev/null po/turkish_1_2_2.po
-msgfmt --output-file=/dev/null po/ukrainian_1_2_3.po
+for f in $(find po/ -name "*.po"); do echo "Checking $f:"; msgfmt --output-file=/dev/null $f; echo ""; done
