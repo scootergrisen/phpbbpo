@@ -364,7 +364,7 @@ msgstr ""
 // some strings have \" already.
 // the php files use: 'KEY' => 'Text "text".'
 
-// NOTE: This is double escaped inside the shell script so good luck in figuring out the real value
+// NOTE: This is double escaped inside the shell script so good luck figuring out the real value
 \$replace_from = array('\\\\', '"', "\\n");
 \$replace_to = array('\\\\\\\\', '\\"', "\\\n");
 

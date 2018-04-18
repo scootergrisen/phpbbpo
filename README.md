@@ -54,7 +54,7 @@ This we can use to improve the code or the language packs so it will hopefully g
 
 [gettext](https://www.gnu.org/software/gettext/)  
 [PyG3T](https://github.com/pyg3t/pyg3t)  
-[http://toolkit.translatehouse.org/](Toolkit)  
+[Toolkit](http://toolkit.translatehouse.org/)  
 GUI tools:  
 [Virtaal](http://virtaal.translatehouse.org/)  
 [Poedit](https://poedit.net/)  
